@@ -1,0 +1,415 @@
+/* Library page scoped styles - calm, vertical, intentional */
+
+.library-root .library-section {
+  margin-bottom: 3rem !important;
+}
+
+/* Grid layout for book sections */
+.library-root .library-section > div {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)) !important;
+  gap: 1rem !important;
+}
+
+@media (min-width: 768px) {
+  .library-root .library-section > div {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)) !important;
+    gap: 1.25rem !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .library-root .library-section > div {
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)) !important;
+    gap: 1.5rem !important;
+  }
+}
+
+.library-root .library-section-title {
+  font-size: 0.9rem !important;
+  letter-spacing: 0.05em !important;
+  opacity: 0.6 !important;
+  margin-bottom: 1rem !important;
+}
+
+/* Filters - Keep as-is, minimal styling */
+.library-root .library-filters {
+  display: flex !important;
+  gap: 0.5rem !important;
+  flex-wrap: wrap !important;
+}
+
+.library-root .library-filter {
+  padding: 0.375rem 0.75rem !important;
+  font-size: 0.875rem !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+  background: white !important;
+  color: rgba(0, 0, 0, 0.6) !important;
+  border-radius: 0.25rem !important;
+  cursor: pointer !important;
+  transition: all 0.15s ease !important;
+}
+
+.library-root .library-filter:hover {
+  border-color: rgba(0, 0, 0, 0.12) !important;
+  color: rgba(0, 0, 0, 0.7) !important;
+}
+
+.library-root .library-filter-active {
+  border-color: rgba(99, 102, 241, 0.3) !important;
+  color: rgba(99, 102, 241, 0.8) !important;
+  background: rgba(99, 102, 241, 0.05) !important;
+}
+
+/* Cards - Quiet shelf compartments */
+.library-root .library-card {
+  background: white !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+  border-left: 3px solid transparent !important;
+  border-radius: 0.375rem !important;
+  padding: 0.875rem 1rem !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.75rem !important;
+  /* No shadow - embedded, not floating */
+  box-shadow: none !important;
+  transition: border-left-color 0.2s ease !important;
+}
+
+/* Color accents by status - very subtle */
+.library-root .library-section-reading .library-card {
+  border-left-color: rgba(99, 102, 241, 0.2) !important; /* Soft indigo */
+}
+
+.library-root .library-section-paused .library-card {
+  border-left-color: rgba(180, 83, 9, 0.2) !important; /* Warm amber */
+}
+
+.library-root .library-section-finished .library-card {
+  border-left-color: rgba(101, 163, 13, 0.2) !important; /* Muted sage */
+}
+
+.library-root .library-section-want-to-read .library-card {
+  border-left-color: rgba(168, 85, 247, 0.15) !important; /* Soft lavender */
+}
+
+.library-root .library-card-content {
+  flex: 1 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.375rem !important;
+}
+
+.library-root .library-card-title {
+  font-size: 1rem !important;
+  line-height: 1.4 !important;
+  font-weight: 450 !important; /* Slightly reduced from 500 */
+  color: rgba(0, 0, 0, 0.9) !important;
+  margin: 0 !important;
+}
+
+.library-root .library-card-author {
+  font-size: 0.875rem !important;
+  opacity: 0.6 !important;
+  color: rgba(0, 0, 0, 0.6) !important;
+  margin: 0 !important;
+}
+
+.library-root .library-card-tags {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 0.375rem !important;
+  margin-top: 0.125rem !important;
+}
+
+.library-root .library-card-tag {
+  font-size: 0.75rem !important;
+  opacity: 0.5 !important;
+  font-style: italic !important;
+  color: rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Metadata - Quieted */
+.library-root .library-card-metadata {
+  display: flex !important;
+  gap: 0.75rem !important;
+  margin-top: 0.25rem !important;
+  font-size: 0.8125rem !important;
+}
+
+.library-root .library-card-status,
+.library-root .library-card-activity {
+  opacity: 0.5 !important;
+  color: rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Subtle color hints in status labels - based on status value */
+.library-root .library-card-status-button[data-status="currently_reading"] {
+  color: rgba(99, 102, 241, 0.6) !important; /* Soft indigo */
+}
+
+.library-root .library-card-status-button[data-status="paused"] {
+  color: rgba(180, 83, 9, 0.6) !important; /* Warm amber */
+}
+
+.library-root .library-card-status-button[data-status="read"] {
+  color: rgba(101, 163, 13, 0.6) !important; /* Muted sage */
+}
+
+.library-root .library-card-status-button[data-status="want_to_read"] {
+  color: rgba(168, 85, 247, 0.5) !important; /* Soft lavender */
+}
+
+/* Status editing - subtle and calm */
+.library-root .library-card-status-container {
+  position: relative !important;
+}
+
+.library-root .library-card-status-button {
+  background: none !important;
+  border: none !important;
+  padding: 0 !important;
+  font-size: 0.8125rem !important;
+  opacity: 0.5 !important;
+  color: rgba(0, 0, 0, 0.5) !important;
+  cursor: pointer !important;
+  transition: opacity 0.15s ease !important;
+  text-align: left !important;
+}
+
+.library-root .library-card-status-button:hover {
+  opacity: 0.7 !important;
+}
+
+.library-root .library-card-status-button:disabled {
+  opacity: 0.3 !important;
+  cursor: not-allowed !important;
+}
+
+.library-root .library-card-status-button-empty {
+  font-style: italic !important;
+  opacity: 0.4 !important;
+}
+
+.library-root .library-card-status-menu {
+  position: absolute !important;
+  top: 100% !important;
+  left: 0 !important;
+  margin-top: 0.25rem !important;
+  background: white !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+  border-radius: 0.25rem !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+  z-index: 10 !important;
+  min-width: 120px !important;
+  overflow: hidden !important;
+}
+
+.library-root .library-card-status-option {
+  display: block !important;
+  width: 100% !important;
+  padding: 0.5rem 0.75rem !important;
+  background: white !important;
+  border: none !important;
+  text-align: left !important;
+  font-size: 0.8125rem !important;
+  color: rgba(0, 0, 0, 0.7) !important;
+  cursor: pointer !important;
+  transition: background 0.15s ease !important;
+}
+
+.library-root .library-card-status-option:hover {
+  background: rgba(0, 0, 0, 0.03) !important;
+}
+
+.library-root .library-card-status-option-active {
+  background: rgba(99, 102, 241, 0.08) !important;
+  color: rgba(99, 102, 241, 0.8) !important;
+  font-weight: 500 !important;
+}
+
+/* Color hints for status options */
+.library-root .library-card-status-option[data-status="currently_reading"]:hover {
+  background: rgba(99, 102, 241, 0.05) !important;
+}
+
+.library-root .library-card-status-option[data-status="paused"]:hover {
+  background: rgba(180, 83, 9, 0.05) !important;
+}
+
+.library-root .library-card-status-option[data-status="read"]:hover {
+  background: rgba(101, 163, 13, 0.05) !important;
+}
+
+.library-root .library-card-status-option[data-status="want_to_read"]:hover {
+  background: rgba(168, 85, 247, 0.05) !important;
+}
+
+/* Recommendation reason - calm, inline, always visible */
+.library-root .library-card-reason {
+  font-size: 0.8125rem !important;
+  line-height: 1.5 !important;
+  color: rgba(180, 83, 9, 0.65) !important; /* Warm, readable tone */
+  margin-top: 0.5rem !important;
+  font-weight: 400 !important;
+  font-style: normal !important;
+}
+
+/* Recommendation at top - distinct but calm */
+.library-root .library-recommendation-top {
+  width: 100% !important;
+}
+
+.library-root .library-recommendation-card {
+  background: linear-gradient(to bottom, rgba(251, 191, 36, 0.04), rgba(251, 191, 36, 0.02)) !important;
+  border: 1px solid rgba(251, 191, 36, 0.2) !important;
+  border-left: 3px solid rgba(251, 191, 36, 0.4) !important;
+  border-radius: 0.5rem !important;
+  padding: 1.25rem 1.5rem !important;
+  transition: all 0.2s ease !important;
+}
+
+.library-root .library-recommendation-card:hover {
+  border-left-color: rgba(251, 191, 36, 0.5) !important;
+  background: linear-gradient(to bottom, rgba(251, 191, 36, 0.06), rgba(251, 191, 36, 0.03)) !important;
+}
+
+.library-root .library-recommendation-content {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.5rem !important;
+}
+
+.library-root .library-recommendation-header {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  margin-bottom: 0.25rem !important;
+}
+
+.library-root .library-recommendation-label {
+  font-size: 0.75rem !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.05em !important;
+  text-transform: uppercase !important;
+  color: rgba(180, 83, 9, 0.7) !important;
+}
+
+.library-root .library-recommendation-refresh {
+  background: none !important;
+  border: none !important;
+  font-size: 1rem !important;
+  color: rgba(180, 83, 9, 0.6) !important;
+  cursor: pointer !important;
+  padding: 0.25rem 0.5rem !important;
+  border-radius: 0.25rem !important;
+  transition: all 0.2s ease !important;
+  opacity: 0.7 !important;
+}
+
+.library-root .library-recommendation-refresh:hover {
+  opacity: 1 !important;
+  color: rgba(180, 83, 9, 0.8) !important;
+  background: rgba(180, 83, 9, 0.05) !important;
+}
+
+.library-root .library-recommendation-refresh:active {
+  transform: rotate(180deg) !important;
+}
+
+.library-root .library-recommendation-get-button {
+  width: 100% !important;
+  padding: 1rem 1.5rem !important;
+  background: linear-gradient(to bottom, rgba(251, 191, 36, 0.08), rgba(251, 191, 36, 0.04)) !important;
+  border: 1px solid rgba(251, 191, 36, 0.2) !important;
+  border-radius: 0.5rem !important;
+  color: rgba(180, 83, 9, 0.7) !important;
+  font-size: 0.875rem !important;
+  font-weight: 500 !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+}
+
+.library-root .library-recommendation-get-button:hover {
+  background: linear-gradient(to bottom, rgba(251, 191, 36, 0.12), rgba(251, 191, 36, 0.06)) !important;
+  border-color: rgba(251, 191, 36, 0.3) !important;
+  color: rgba(180, 83, 9, 0.9) !important;
+}
+
+/* Agentic thinking state */
+.library-root .library-recommendation-thinking {
+  padding: 1rem 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 1rem !important;
+}
+
+.library-root .library-recommendation-thinking-dots {
+  display: flex !important;
+  gap: 0.5rem !important;
+}
+
+.library-root .library-recommendation-thinking-dots span {
+  width: 8px !important;
+  height: 8px !important;
+  border-radius: 50% !important;
+  background: rgba(180, 83, 9, 0.4) !important;
+  animation: thinking-pulse 1.4s ease-in-out infinite !important;
+}
+
+.library-root .library-recommendation-thinking-dots span:nth-child(1) {
+  animation-delay: 0s !important;
+}
+
+.library-root .library-recommendation-thinking-dots span:nth-child(2) {
+  animation-delay: 0.2s !important;
+}
+
+.library-root .library-recommendation-thinking-dots span:nth-child(3) {
+  animation-delay: 0.4s !important;
+}
+
+@keyframes thinking-pulse {
+  0%, 80%, 100% {
+    opacity: 0.3 !important;
+    transform: scale(0.8) !important;
+  }
+  40% {
+    opacity: 1 !important;
+    transform: scale(1) !important;
+  }
+}
+
+.library-root .library-recommendation-thinking-message {
+  font-size: 0.8125rem !important;
+  color: rgba(180, 83, 9, 0.65) !important;
+  font-style: italic !important;
+  margin: 0 !important;
+  text-align: center !important;
+}
+
+.library-root .library-recommendation-title {
+  font-size: 1.125rem !important;
+  line-height: 1.4 !important;
+  font-weight: 500 !important;
+  color: rgba(0, 0, 0, 0.9) !important;
+  margin: 0 !important;
+}
+
+.library-root .library-recommendation-author {
+  font-size: 0.875rem !important;
+  opacity: 0.65 !important;
+  color: rgba(0, 0, 0, 0.65) !important;
+  margin: 0 !important;
+}
+
+.library-root .library-recommendation-reason {
+  font-size: 0.8125rem !important;
+  line-height: 1.5 !important;
+  color: rgba(180, 83, 9, 0.7) !important;
+  margin-top: 0.5rem !important;
+  font-weight: 400 !important;
+  font-style: normal !important;
+}
+
