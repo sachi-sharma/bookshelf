@@ -64,12 +64,13 @@ async def health_check():
     """Health check endpoint"""
     try:
         # Test database connection
+        from sqlalchemy import text
         db = next(get_db())
-        db.execute("SELECT 1")
+        db.execute(text("SELECT 1"))
         db.close()
         return {
             "status": "healthy",
-            "timestamp": datetime.utcnow(),
+            "timestamp": datetime.utcnow().isoformat(),
             "database": "connected"
         }
     except Exception as e:
@@ -78,7 +79,7 @@ async def health_check():
             status_code=503,
             content={
                 "status": "unhealthy",
-                "timestamp": datetime.utcnow(),
+                "timestamp": datetime.utcnow().isoformat(),
                 "database": "disconnected",
                 "error": str(e) if settings.debug else "Database connection failed"
             }
